@@ -40,7 +40,7 @@ class LogglyOutputBuffred < Fluent::BufferedOutput
     super
     require 'net/http/persistent'
     @uri = URI @loggly_url
-    @http = Net::HTTP::Persistent.new 'fluentd-plugin-loggly', :ENV
+    @http = Net::HTTP::Persistent.new name: 'fluentd-plugin-loggly'
     @http.headers['Content-Type'] = 'text'
   end
 
